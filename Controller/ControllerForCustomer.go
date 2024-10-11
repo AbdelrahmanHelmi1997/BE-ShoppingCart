@@ -28,13 +28,7 @@ func (u *User) SignUp(c *gin.Context) {
 
 	fmt.Println()
 
-	count, err := dataBase.UsersCollection.CountDocuments(ctx, bson.M{"email": user.Email})
-	defer cancel()
-	if err != nil {
-		log.Panic(err)
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "error occured while checking for the email"})
-		return
-	}
+	
 
 	password := Helper.HashPassword(user.Password)
 	user.Password = password
