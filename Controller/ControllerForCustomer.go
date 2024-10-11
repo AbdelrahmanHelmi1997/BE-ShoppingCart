@@ -33,10 +33,7 @@ func (u *User) SignUp(c *gin.Context) {
 	password := Helper.HashPassword(user.Password)
 	user.Password = password
 
-	if count > 0 {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "this email  already exists"})
-		return
-	}
+
 
 
 	user.ID = primitive.NewObjectID()
